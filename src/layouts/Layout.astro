@@ -1,0 +1,82 @@
+---
+import '../styles/global.css';
+
+interface Props {
+  title?: string;
+  description?: string;
+}
+
+const {
+  title = 'Aaron Schweig | Aviation Services',
+  description = 'Flugausbildung, Proficiency Checks und Safety-Pilot-Services mit Basis in EDFM (Mannheim) & EDFV (Worms).',
+} = Astro.props;
+
+const year = new Date().getFullYear();
+---
+
+<!doctype html>
+<html lang="de" class="h-full">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="generator" content={Astro.generator} />
+    <meta name="description" content={description} />
+    <!-- Theme color adapts to the visitor's OS light/dark preference. -->
+    <meta
+      name="theme-color"
+      content="#12151c"
+      media="(prefers-color-scheme: dark)"
+    />
+    <meta
+      name="theme-color"
+      content="#f4f6fa"
+      media="(prefers-color-scheme: light)"
+    />
+
+    <!-- Favicons (self-hosted, no external requests) -->
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16.png" />
+    <link rel="icon" href="/favicon.ico" sizes="any" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+    <link rel="manifest" href="/site.webmanifest" />
+
+    <link rel="canonical" href={new URL(Astro.url.pathname, Astro.site)} />
+
+    <!-- Open Graph / social preview -->
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={new URL(Astro.url.pathname, Astro.site)} />
+    <meta property="og:image" content={new URL('/icon-512.png', Astro.site)} />
+
+    <title>{title}</title>
+  </head>
+  <body
+    class="flex h-dvh flex-col overflow-hidden bg-bg font-sans text-text antialiased selection:bg-electric/30 selection:text-white"
+  >
+    <div class="flex flex-1 flex-col overflow-y-auto">
+      <slot />
+    </div>
+
+    <footer class="shrink-0 border-t border-border px-6 py-5">
+      <div
+        class="mx-auto flex max-w-3xl flex-col items-center justify-between gap-4 text-sm text-muted sm:flex-row"
+      >
+        <p>&copy; {year} Aaron Schweig. Alle Rechte vorbehalten.</p>
+        <nav class="flex items-center gap-6">
+          <a
+            href="/impressum/"
+            class="transition-colors hover:text-electric focus-visible:text-electric focus-visible:outline-none"
+            >Impressum</a
+          >
+          <a
+            href="/datenschutz/"
+            class="transition-colors hover:text-electric focus-visible:text-electric focus-visible:outline-none"
+            >Datenschutz</a
+          >
+        </nav>
+      </div>
+    </footer>
+  </body>
+</html>

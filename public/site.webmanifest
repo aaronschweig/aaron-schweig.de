@@ -1,0 +1,13 @@
+{
+  "name": "Aaron Schweig | Aviation Services",
+  "short_name": "Aaron Schweig",
+  "description": "Precision Flight Training & Aviation Services.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#12151c",
+  "theme_color": "#12151c",
+  "icons": [
+    { "src": "/icon-192.png", "type": "image/png", "sizes": "192x192" },
+    { "src": "/icon-512.png", "type": "image/png", "sizes": "512x512" }
+  ]
+}

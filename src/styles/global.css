@@ -1,0 +1,67 @@
+@import "tailwindcss";
+
+/*
+  Design tokens for the Aaron Schweig | Aviation Services placeholder site.
+  Minimalist aviation palette: Anthracite / Slate Navy / Silver / Electric Blue.
+  Typography uses a pure system font stack only — no external font CDNs (GDPR).
+
+  Light/dark theming is fully automatic and JavaScript-free: semantic tokens
+  below default to dark and swap under `prefers-color-scheme: light`.
+*/
+
+/* Fixed brand palette (identical in both themes). */
+:root {
+  --brand-electric: #2f81f7;
+
+  /* Semantic tokens — DARK is the default. */
+  --bg: #12151c; /* page background (anthracite) */
+  --surface: #1b202b; /* raised surfaces / borders base */
+  --text: #c7ced9; /* primary body text (silver) */
+  --heading: #ffffff; /* headings */
+  --muted: #8b93a3; /* secondary/subtle text */
+  --border: rgba(255, 255, 255, 0.08);
+  --logo-plate: rgba(199, 206, 217, 0.95); /* light plate behind dark-ink logo */
+  --logo-plate-ring: rgba(255, 255, 255, 0.1);
+}
+
+@media (prefers-color-scheme: light) {
+  :root {
+    --bg: #f4f6fa; /* soft off-white */
+    --surface: #ffffff;
+    --text: #33404f; /* slate for body */
+    --heading: #0f172a; /* dark slate navy */
+    --muted: #64748b;
+    --border: rgba(15, 23, 42, 0.1);
+    --logo-plate: transparent; /* logo sits directly on light bg */
+    --logo-plate-ring: transparent;
+  }
+}
+
+/* Map semantic tokens into Tailwind so utilities like `bg-bg`,
+   `text-heading`, `border-border`, `text-electric` work. Using @theme inline
+   keeps them as references so the media-query swap applies at runtime. */
+@theme inline {
+  --font-sans: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont,
+    "Segoe UI", Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
+
+  --color-electric: var(--brand-electric);
+  --color-bg: var(--bg);
+  --color-surface: var(--surface);
+  --color-text: var(--text);
+  --color-heading: var(--heading);
+  --color-muted: var(--muted);
+  --color-border: var(--border);
+  --color-logo-plate: var(--logo-plate);
+  --color-logo-plate-ring: var(--logo-plate-ring);
+}
+
+html {
+  scroll-behavior: smooth;
+  /* Hint to the UA to render native form controls / scrollbars per theme. */
+  color-scheme: light dark;
+}
+
+body {
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
