@@ -1,7 +1,7 @@
 {
   "name": "aaron-schweig.de",
   "type": "module",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "engines": {
     "node": ">=22.12.0"
   },
@@ -14,7 +14,7 @@
   },
   "dependencies": {
     "@tailwindcss/vite": "^4.3.3",
-    "astro": "^7.1.6",
+    "astro": "^7.2.2",
     "tailwindcss": "^4.3.3"
   },
   "devDependencies": {
